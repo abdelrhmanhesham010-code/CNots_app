@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nots_app/widgets/note_item.dart';
 import 'package:nots_app/widgets/search_icon.dart';
 
 class NotsView extends StatelessWidget {
@@ -20,15 +21,8 @@ class NotsView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          width: double.infinity,
-          height: 180,
-        ),
+        padding: const EdgeInsets.only(top: 30),
+        child: Column(children: [NoteItem(), NoteItem()]),
       ),
     );
   }

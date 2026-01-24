@@ -11,7 +11,7 @@ class SearchIcon extends StatelessWidget {
         width: 45,
         height: 45,
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(.4),
+          color: Colors.black.withValues(alpha: .4),
           borderRadius: BorderRadius.circular(16),
         ),
 
