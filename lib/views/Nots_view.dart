@@ -52,13 +52,45 @@ class AddNoteButton extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            CustomTextfield(hint: 'Title'),
-            SizedBox(height: 30),
-            CustomTextfield(hint: 'content', mazLins: 5),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              CustomTextfield(hint: 'Title'),
+              SizedBox(height: 20),
+              CustomTextfield(hint: 'content', mazLins: 5),
+              SizedBox(height: 30),
+
+              custombottom(),
+              SizedBox(height: 50),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class custombottom extends StatelessWidget {
+  const custombottom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xffBFECFF),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      child: Center(
+        child: Text(
+          'Add',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
