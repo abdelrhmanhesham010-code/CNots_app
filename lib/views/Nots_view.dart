@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nots_app/widgets/note_item.dart';
+
+import 'package:nots_app/widgets/nots_list_view.dart';
 import 'package:nots_app/widgets/search_icon.dart';
 
 class NotsView extends StatelessWidget {
@@ -10,7 +11,8 @@ class NotsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [SearchIcon()],
-        title: Text(
+        backgroundColor: Color(0xff6A1E55),
+        title: const Text(
           'CNotes',
           style: TextStyle(
             fontSize: 24,
@@ -20,9 +22,9 @@ class NotsView extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: Column(children: [NoteItem(), NoteItem()]),
+      body: const Padding(
+        padding: EdgeInsets.only(top: 5),
+        child: NotsListView(),
       ),
     );
   }

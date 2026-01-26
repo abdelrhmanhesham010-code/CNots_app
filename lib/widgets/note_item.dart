@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 Padding NoteItem() {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
     child: Container(
       padding: EdgeInsets.only(left: 16, top: 24, bottom: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Colors.white,
+        color: Color(0xffA64D79),
       ),
 
       // width: double.infinity,

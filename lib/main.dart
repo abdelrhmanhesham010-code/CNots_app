@@ -14,7 +14,7 @@ class CNotsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: Color(0xff1A1A1D),
       ),
       home: NotsView(),
     );
