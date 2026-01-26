@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nots_app/widgets/custom_textField.dart';
 import 'package:nots_app/widgets/nots_list_view.dart';
 import 'package:nots_app/widgets/search_icon.dart';
 
@@ -9,7 +10,17 @@ class NotsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(20),
+            ),
+            context: context,
+            builder: (context) {
+              return AddNoteButton();
+            },
+          );
+        },
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
@@ -26,8 +37,29 @@ class NotsView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 5),
+        padding: const EdgeInsets.only(top: 10),
         child: NotsListView(),
+      ),
+    );
+  }
+}
+
+class AddNoteButton extends StatelessWidget {
+  const AddNoteButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            CustomTextfield(hint: 'Title'),
+            SizedBox(height: 30),
+            CustomTextfield(hint: 'content', mazLins: 5),
+          ],
+        ),
       ),
     );
   }

@@ -7,6 +7,7 @@ class NotsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         return NoteItem();
       },
