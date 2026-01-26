@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nots_app/widgets/custom_textField.dart';
+import 'package:nots_app/widgets/floating_button_note.dart';
 import 'package:nots_app/widgets/nots_list_view.dart';
 import 'package:nots_app/widgets/search_icon.dart';
 
@@ -24,7 +24,7 @@ class NotsView extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
-        actions: [SearchIcon()],
+        actions: [SearchIcon(icon: Icon(Icons.search))],
         backgroundColor: Color(0xff6A1E55),
         title: const Text(
           'CNotes',
@@ -39,59 +39,6 @@ class NotsView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: NotsListView(),
-      ),
-    );
-  }
-}
-
-class AddNoteButton extends StatelessWidget {
-  const AddNoteButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 30),
-              CustomTextfield(hint: 'Title'),
-              SizedBox(height: 20),
-              CustomTextfield(hint: 'content', mazLins: 5),
-              SizedBox(height: 30),
-
-              custombottom(),
-              SizedBox(height: 50),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class custombottom extends StatelessWidget {
-  const custombottom({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xffBFECFF),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      child: Center(
-        child: Text(
-          'Add',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
     );
   }
