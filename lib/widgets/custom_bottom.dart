@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class custombottom extends StatelessWidget {
-  const custombottom({super.key});
-
+  const custombottom({super.key, this.onTap});
+  final  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xffBFECFF),

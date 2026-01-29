@@ -10,20 +10,65 @@ class AddNoteButton extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 30),
-              CustomTextfield(hint: 'Title'),
-              SizedBox(height: 20),
-              CustomTextfield(hint: 'content', mazLins: 5),
-              SizedBox(height: 30),
+        child: SingleChildScrollView(child: AddNoteForm()),
+      ),
+    );
+  }
+}
 
-              custombottom(),
-              SizedBox(height: 50),
-            ],
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+final GlobalKey<FormState> globalKey = GlobalKey();
+AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+String? title, subTitle;
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: globalKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          SizedBox(height: 30),
+          CustomTextfield(
+            hint: 'Title',
+            onSaved: (value) {
+              title = value;
+            },
           ),
-        ),
+          SizedBox(height: 20),
+          CustomTextfield(
+            hint: 'content',
+            mazLins: 5,
+            onSaved: (value) {
+              subTitle = value;
+            },
+          ),
+          SizedBox(height: 30),
+
+          custombottom(
+            onTap: () {
+              if (globalKey.currentState!.validate()) {
+                globalKey.currentState!.save();
+                globalKey.currentState!.reset();
+                autovalidateMode = AutovalidateMode.disabled;
+                setState(() {
+                  
+                });
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
+          SizedBox(height: 50),
+        ],
       ),
     );
   }
