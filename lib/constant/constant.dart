@@ -6,3 +6,4 @@ var dataColor = [
   Color(0xff720455),
   Color(0xff910A67),
 ];
+String kPnoteBox = 'notes_box';
