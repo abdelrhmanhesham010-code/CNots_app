@@ -17,6 +17,13 @@ class AddNoteButton extends StatelessWidget {
             listener: (context, state) {
               if (state is AddNotsSuccess) {
                 Navigator.pop(context);
+                SnackBar(
+                  backgroundColor: Colors.grey,
+                  content: Text(
+                    'تم الاضافه بنجاح',
+                    style: TextStyle(fontSize: 16, color: Colors.red),
+                  ),
+                );
               }
               if (state is AddNotsFaliuer) {
                 print('falier ${state.errorMessage}');
