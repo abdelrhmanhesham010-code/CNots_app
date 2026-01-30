@@ -8,10 +8,13 @@ import 'package:nots_app/views/Nots_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Bloc.observer = SlimpleBlocObserver();
-  await Hive.openBox(kPnoteBox);
   Hive.registerAdapter(NoteModeAdapter());
+  if (!Hive.isBoxOpen(kPnoteBox)) {
+    await Hive.openBox<NoteModel>(kPnoteBox);
+  }
+  Bloc.observer = SlimpleBlocObserver();
 
   runApp(const CNotsApp());
 }

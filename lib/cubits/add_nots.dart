@@ -12,10 +12,10 @@ class AddNotsCubit extends Cubit<AddNotsState> {
     emit(AddNotsLoading());
     try {
       var notsBox = Hive.box<NoteModel>(kPnoteBox);
-      emit(AddNotsSuccess());
       await notsBox.add(note);
+      emit(AddNotsSuccess());
     } catch (e) {
-      AddNotsFaliuer(e.toString());
+      emit(AddNotsFaliuer(e.toString()));
     }
   }
 }

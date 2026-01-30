@@ -20,7 +20,7 @@ class NoteModeAdapter extends TypeAdapter<NoteModel> {
       fields[0] as String,
       fields[1] as String,
       fields[2] as String,
-      fields[3] as Color,
+      fields[3] as int,
     );
   }
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/cubits/add_nots.dart';
+import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/widgets/custom_bottom.dart';
 import 'package:nots_app/widgets/custom_textField.dart';
 
@@ -45,6 +48,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 globalKey.currentState!.reset();
                 autovalidateMode = AutovalidateMode.disabled;
                 setState(() {});
+                NoteModel noteModel = NoteModel(
+                  title!,
+                  subTitle!,
+                  DateTime.now().toString(),
+                  Colors.blue.toARGB32(),
+                );
+                BlocProvider.of<AddNotsCubit>(context).addNote(noteModel);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
