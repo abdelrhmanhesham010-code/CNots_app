@@ -9,21 +9,23 @@ class AddNoteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNotsCubit(),
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: BlocConsumer<AddNotsCubit, AddNotsState>(
             listener: (context, state) {
               if (state is AddNotsSuccess) {
                 Navigator.pop(context);
-                // SnackBar(
-                //   backgroundColor: Colors.grey,
-                //   content: Text(
-                //     'تم الاضافه بنجاح',
-                //     style: TextStyle(fontSize: 16, color: Colors.red),
-                //   ),
-                // );
+                final snackbar = SnackBar(
+                  backgroundColor: Colors.grey,
+                  content: Text(
+                    'تم الاضافه بنجاح',
+                    style: TextStyle(fontSize: 16, color: Colors.red),
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackbar);
               }
               if (state is AddNotsFaliuer) {
                 print('falier ${state.errorMessage}');
@@ -32,7 +34,7 @@ class AddNoteButton extends StatelessWidget {
             builder: (context, state) {
               return ModalProgressHUD(
                 inAsyncCall: state is AddNotsLoading ? true : false,
-                child: AddNoteForm(),
+                child: SingleChildScrollView(child: AddNoteForm()),
               );
             },
           ),

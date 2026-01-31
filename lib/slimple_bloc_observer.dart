@@ -9,16 +9,21 @@ class SlimpleBlocObserver implements BlocObserver {
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
+    debugPrint('close = $bloc');
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
+    debugPrint('create = $bloc');
   }
 
   @override
-  void onDone(Bloc bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
+  void onDone(
+    Bloc bloc,
+    Object? event, [
+    Object? error,
+    StackTrace? stackTrace,
+  ]) {
     // TODO: implement onDone
   }
 
