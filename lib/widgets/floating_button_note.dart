@@ -12,32 +12,35 @@ class AddNoteButton extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNotsCubit(),
       child: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: BlocConsumer<AddNotsCubit, AddNotsState>(
-            listener: (context, state) {
-              if (state is AddNotsSuccess) {
-                Navigator.pop(context);
-                final snackbar = SnackBar(
-                  backgroundColor: Colors.grey,
-                  content: Text(
-                    'تم الاضافه بنجاح',
-                    style: TextStyle(fontSize: 16, color: Colors.red),
+        child: BlocConsumer<AddNotsCubit, AddNotsState>(
+          listener: (context, state) {
+            if (state is AddNotsSuccess) {
+              Navigator.pop(context);
+              final snackbar = SnackBar(
+                backgroundColor: const Color.fromARGB(255, 78, 15, 57),
+                content: Text(
+                  'تم الاضافه بنجاح',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: const Color.fromARGB(255, 255, 207, 207),
                   ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              }
-              if (state is AddNotsFaliuer) {
-                print('falier ${state.errorMessage}');
-              }
-            },
-            builder: (context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is AddNotsLoading ? true : false,
-                child: SingleChildScrollView(child: AddNoteForm()),
+                ),
               );
-            },
-          ),
+              ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            }
+            if (state is AddNotsFaliuer) {
+              print('falier ${state.errorMessage}');
+            }
+          },
+          builder: (context, state) {
+            return AbsorbPointer(
+              absorbing: state is AddNotsLoading ? true : false,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(child: AddNoteForm()),
+              ),
+            );
+          },
         ),
       ),
     );
