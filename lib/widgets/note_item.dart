@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/views/edite_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.nots});
+  final NoteModel nots;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +36,7 @@ class NoteItem extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Text(
-                    'Micor tips',
+                    nots.title,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 26,
@@ -44,7 +45,7 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  'Build your career with abdelrhman hesham',
+                  nots.subTitle,
                   style: TextStyle(
                     color: Colors.black.withValues(alpha: .6),
                     fontFamily: 'Heebo',
@@ -61,7 +62,7 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 24, top: 16),
                 child: Text(
-                  'Sat, Jan 24',
+                  nots.date,
                   style: TextStyle(color: Colors.black.withValues(alpha: .5)),
                 ),
               ),

@@ -7,14 +7,14 @@ import 'package:nots_app/models/note_model.dart';
 part 'read_nots_state.dart';
 
 class ReadNotsCubit extends Cubit<ReadNotsState> {
-  ReadNotsCubit() : super(ReadNotsInitial());
+  ReadNotsCubit() : super(ReadNotsInitial()) {
+    fetcAllhNote();
+  }
+
+  List<NoteModel>? notes;
+
   fetcAllhNote() async {
-    try {
-      var notsBox = Hive.box<NoteModel>(kPnoteBox);
-      List<NoteModel> notes = notsBox.values.toList();
-      emit(ReadNotsSucess(notes));
-    } catch (e) {
-      emit(ReadNotsFaliuer(e.toString()));
-    }
+    var notsBox = Hive.box<NoteModel>(kPnoteBox);
+    notes = notsBox.values.toList();
   }
 }

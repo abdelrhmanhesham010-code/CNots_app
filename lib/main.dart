@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nots_app/constant/constant.dart';
+import 'package:nots_app/cubits/read_nots_cubit/cubit/read_nots_cubit.dart';
 import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/slimple_bloc_observer.dart';
 import 'package:nots_app/views/Nots_view.dart';
@@ -29,7 +30,10 @@ class CNotsApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Color(0xff1A1A1D),
       ),
-      home: NotsView(),
+      home: BlocProvider(
+        create: (context) => ReadNotsCubit(),
+        child: NotsView(),
+      ),
     );
   }
 }

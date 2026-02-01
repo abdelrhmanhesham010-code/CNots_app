@@ -1,6 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
+import 'package:nots_app/cubits/read_nots_cubit/cubit/read_nots_cubit.dart';
 import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/widgets/custom_bottom.dart';
 import 'package:nots_app/widgets/custom_textField.dart';
@@ -18,6 +22,10 @@ String? title, subTitle;
 
 class _AddNoteFormState extends State<AddNoteForm> {
   @override
+  // void initState() {
+  //   BlocProvider.of<ReadNotsCubit>(context).fetcAllhNote();
+  //   super.initState();
+  // }
   Widget build(BuildContext context) {
     return Form(
       key: globalKey,
@@ -51,10 +59,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     globalKey.currentState!.reset();
                     autovalidateMode = AutovalidateMode.disabled;
                     setState(() {});
+                    var currentDate = DateTime.now();
+                    var formateCurrentDate = DateFormat.yMd().format(
+                      currentDate,
+                    );
                     NoteModel noteModel = NoteModel(
                       title!,
                       subTitle!,
-                      DateTime.now().toString(),
+                      formateCurrentDate,
                       Colors.blue.toARGB32(),
                     );
                     BlocProvider.of<AddNotsCubit>(context).addNote(noteModel);
