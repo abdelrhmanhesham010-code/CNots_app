@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:nots_app/cubits/add_nots.dart';
+import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
 import 'package:nots_app/widgets/add_note_form.dart';
 
 class AddNoteButton extends StatelessWidget {
