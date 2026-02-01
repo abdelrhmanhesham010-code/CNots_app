@@ -3,8 +3,8 @@ import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/views/edite_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key, required this.nots});
-  final NoteModel nots;
+  const NoteItem({super.key, required this.notes});
+  final NoteModel notes;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,7 +36,7 @@ class NoteItem extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Text(
-                    nots.title,
+                    notes.title,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 26,
@@ -45,7 +45,7 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  nots.subTitle,
+                  notes.subTitle,
                   style: TextStyle(
                     color: Colors.black.withValues(alpha: .6),
                     fontFamily: 'Heebo',
@@ -55,14 +55,16 @@ class NoteItem extends StatelessWidget {
                 trailing: IconButton(
                   iconSize: 26,
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    notes.delete();
+                  },
                   icon: Icon(Icons.delete),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 24, top: 16),
                 child: Text(
-                  nots.date,
+                  notes.date,
                   style: TextStyle(color: Colors.black.withValues(alpha: .5)),
                 ),
               ),
