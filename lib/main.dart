@@ -24,15 +24,15 @@ class CNotsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color(0xff1A1A1D),
-      ),
-      home: BlocProvider(
-        create: (context) => ReadNotsCubit(),
-        child: NotsView(),
+    return BlocProvider(
+      create: (context) => ReadNotsCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Color(0xff1A1A1D),
+        ),
+        home: NotsView(),
       ),
     );
   }

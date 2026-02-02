@@ -13,8 +13,8 @@ class NotsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
+        onPressed: () async {
+          await showModalBottomSheet(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(20),
             ),
@@ -41,9 +41,9 @@ class NotsView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: BlocProvider(
-          create: (context) => ReadNotsCubit(),
-          child: NotsListView(),
+        child: BlocConsumer<ReadNotsCubit, ReadNotsState>(
+          listener: (context, state) => ReadNotsCubit(),
+          builder: (context, state) => NotsListView(),
         ),
       ),
     );

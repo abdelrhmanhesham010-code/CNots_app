@@ -16,5 +16,12 @@ class ReadNotsCubit extends Cubit<ReadNotsState> {
   fetcAllhNote() async {
     var notsBox = Hive.box<NoteModel>(kPnoteBox);
     notes = notsBox.values.toList();
+    emit(ReadNotsSucess());
+  }
+
+  addNote(NoteModel note) async {
+    var notsBox = Hive.box<NoteModel>(kPnoteBox);
+    await notsBox.add(note);
+    emit(ReadNotsSucess());
   }
 }

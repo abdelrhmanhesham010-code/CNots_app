@@ -2,7 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:nots_app/constant/constant.dart';
 import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
 import 'package:nots_app/cubits/read_nots_cubit/cubit/read_nots_cubit.dart';
 import 'package:nots_app/models/note_model.dart';
@@ -53,7 +55,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             builder: (context, state) {
               return custombottom(
                 isLoading: state is AddNotsLoading ? true : false,
-                onTap: () {
+                onTap: () async {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();
                     globalKey.currentState!.reset();
@@ -69,6 +71,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       formateCurrentDate,
                       Colors.blue.toARGB32(),
                     );
+
                     BlocProvider.of<AddNotsCubit>(context).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
