@@ -1,15 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:intl/intl.dart';
-
 import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
-
+import 'package:intl/intl.dart';
 import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/widgets/custom_bottom.dart';
 import 'package:nots_app/widgets/custom_textField.dart';
+import 'package:nots_app/widgets/pick_your_fav_color.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
@@ -50,6 +46,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
           ),
           SizedBox(height: 30),
+          ColorListBulider(),
+
+          SizedBox(height: 30),
 
           BlocBuilder<AddNotsCubit, AddNotsState>(
             builder: (context, state) {
@@ -71,7 +70,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       formateCurrentDate,
                       Colors.blue.toARGB32(),
                     );
-
                     BlocProvider.of<AddNotsCubit>(context).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
@@ -87,3 +85,4 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
