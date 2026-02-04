@@ -22,7 +22,7 @@ class EditeNoteView extends StatelessWidget {
             icon: Icon(Icons.check),
           ),
         ],
-        backgroundColor: Color(0xff6A1E55),
+        backgroundColor: Color(0xffDA4167),
         title: const Text(
           'Edit Note',
           style: TextStyle(

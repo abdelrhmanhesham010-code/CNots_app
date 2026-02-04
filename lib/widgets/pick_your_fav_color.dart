@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
@@ -54,6 +56,7 @@ class _ColorListBuliderState extends State<ColorListBulider> {
           return GestureDetector(
             onTap: () {
               colorIndexColor = index;
+              context.read<AddNotsCubit>().color=colors[index];
               setState(() {});
             },
             child: ColorItem(

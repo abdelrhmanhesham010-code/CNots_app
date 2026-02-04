@@ -13,14 +13,20 @@ class NotsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffDA4167),
         onPressed: () async {
           await showModalBottomSheet(
+            isScrollControlled: true,
+
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(20),
             ),
             context: context,
             builder: (context) {
-              return AddNoteButton();
+              return Container(
+                height: MediaQuery.of(context).size.height * 0.75,
+                child: AddNoteButton(),
+              );
             },
           );
         },
@@ -28,7 +34,7 @@ class NotsView extends StatelessWidget {
       ),
       appBar: AppBar(
         actions: [SearchIcon(icon: Icon(Icons.search))],
-        backgroundColor: Color(0xff6A1E55),
+        backgroundColor: Color(0xffDA4167),
         title: const Text(
           'CNotes',
           style: TextStyle(

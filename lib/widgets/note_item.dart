@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/cubits/add_nots_cubit/add_nots.dart';
 import 'package:nots_app/cubits/read_nots_cubit/cubit/read_nots_cubit.dart';
 import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/views/edite_note_view.dart';
@@ -27,7 +28,7 @@ class NoteItem extends StatelessWidget {
           padding: EdgeInsets.only(left: 16, top: 24, bottom: 24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Color(0xffA64D79),
+            color:Color(note.color),
           ),
 
           // width: double.infinity,
