@@ -5,8 +5,9 @@ import 'package:nots_app/models/note_model.dart';
 import 'package:nots_app/views/edite_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key, required this.notes});
-  final NoteModel notes;
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +18,7 @@ class NoteItem extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return EditeNoteView();
+                return EditeNoteView(note: note);
               },
             ),
           );
@@ -38,7 +39,7 @@ class NoteItem extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Text(
-                    notes.title,
+                    note.title,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 26,
@@ -47,7 +48,7 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  notes.subTitle,
+                  note.subTitle,
                   style: TextStyle(
                     color: Colors.black.withValues(alpha: .6),
                     fontFamily: 'Heebo',
@@ -58,7 +59,7 @@ class NoteItem extends StatelessWidget {
                   iconSize: 26,
                   color: Colors.black,
                   onPressed: () {
-                    notes.delete();
+                    note.delete();
                     BlocProvider.of<ReadNotsCubit>(context).fetcAllhNote();
                   },
                   icon: Icon(Icons.delete),
@@ -67,7 +68,7 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 24, top: 16),
                 child: Text(
-                  notes.date,
+                  note.date,
                   style: TextStyle(color: Colors.black.withValues(alpha: .5)),
                 ),
               ),

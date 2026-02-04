@@ -6,14 +6,23 @@ class CustomTextfield extends StatelessWidget {
     required this.hint,
     this.mazLins = 1,
     this.onSaved,
+    this.onchanged,
+    this.initialValue,
+    this.controller,
   });
   final String hint;
   final int mazLins;
   final void Function(String?)? onSaved;
+  final Function(String)? onchanged;
+  final String? initialValue;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      initialValue: initialValue,
+      onChanged: onchanged,
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
